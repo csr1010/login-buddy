@@ -1,13 +1,17 @@
 var apple = (function() {
     return {
-
+        //object containing all the models defined in the project.
+        //ex: login.js has loginmodel i.e apple.models.loginmodel...
         models: {
 
         },
+        //object containing all the models defined in the project.
+        //ex: login.js has loginmodel i.e apple.models.loginmodel...
         controllers: {
 
         },
-
+        //called when broser completes loading the page, this will load the buddy.json file where data is 
+        //stubbed to simulate as if data is coming from some server response.
         getbuddiesList: function() {
             currentModel = this;
             var buddyModel = JSON.parse(sessionStorage.getItem("buddydata"));
@@ -22,6 +26,10 @@ var apple = (function() {
                 return null;
             }
         },
+        //intiliazing the application occurs here
+        //jquery ajax returns promise handler
+        //to make multiple syncronus call I used jquery deffered / prmoise
+        //call success callback on successful load of JSON stub
         initApp: function() {
             currentModel = this;
             var promise = currentModel.getbuddiesList();
@@ -33,12 +41,15 @@ var apple = (function() {
             }
         },
         customMethods: {
+            //call back which stores the json data into sessionstorage
             buddyLoadsuccess: function(data) {
                 sessionStorage.setItem("buddydata", JSON.stringify(data));
             },
             buddyLoadfail:function(){
                 sessionStorage.setItem("buddydata", null);
             },
+            //initially load loginmodel into DOM if path is login.html
+            //else load buddymodel
             runTheApplication: function(){
                      if(location.pathname == "/login.html"){
                           apple.models.loginModel.modeltoView.renderUI();
@@ -47,6 +58,7 @@ var apple = (function() {
                           apple.models.footerModel.modeltoView.renderUI();
                           apple.models.addbuddy.modeltoView.onAfterLoad();
                      }
+                //small animation to title
                 $(".titleinitial").addClass("scale");
                 setTimeout(function(){
                     $(".buddysection>div:nth-child(1)").css({
@@ -63,6 +75,8 @@ var apple = (function() {
 			}
         },
         utils: {
+            //load the html template from cache,and bind the model to template and populate the html and load
+            // the generated html into corresponding DOM node.
             modelTohtml: function(onlyRendering) {
                 var currentModel = this;
                 if(!onlyRendering)
@@ -79,6 +93,9 @@ var apple = (function() {
                         currentModel.onAfterLoad();
                     });
             },
+            //all models contains events
+            //this will loop thru the array of events defined for a object
+            //bind events to call backs i.e adding eventlistens
             eventbinders: function(val) {
                 var eventsList = val["events"] || [];
                 var ref = this;
@@ -86,6 +103,10 @@ var apple = (function() {
                    $("body").on(val.type,val.selector,val.callback.bind(ref));
     			});
             },
+            //model contains different objects, for instance login model has different input elemnts , buttons 
+            //which all comes under model...
+            //this method helps in looping through all objects and registers events using eventbinders method
+            //defined above
             eventHandlers: function() {
                 var currentModel = this;
 	    		$.each(currentModel.thisModel, function(key,valueObj){
@@ -103,7 +124,8 @@ var apple = (function() {
     };
 })();
 window.addEventListener('load', function(e) {
-
+    //load the data to browser cache
+    //this will be helpful in quick loading of page and offilne loading as well.
     window.applicationCache.addEventListener('updateready', function(e) {
         if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
             if (confirm('Do you want to load new version of this app??')) {
@@ -113,5 +135,6 @@ window.addEventListener('load', function(e) {
             // Manifest didn't changed. Nothing new to server.
         }
     }, false);
+    //call init method, starting point of the application
     apple.initApp();
 }, false);
