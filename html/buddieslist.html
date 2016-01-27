@@ -1,0 +1,21 @@
+    <script id="target" type="text/template">
+        <section class="form row" style="    text-align: center;">
+            <input  type =text placeholder="{{search.name}}" id="searchfname">
+            <button style="    width: 80px;" id={{search.id}} >Search</button>
+        </section>
+        <ul>
+			{{#list.values}}
+                    <li class='row budlst' data-id={{id}}>
+                    <div>
+                        <input type=checkbox class=checker id="{{id}}">
+                    </div>
+                    <div class="{{status}}">
+                        <div  style='    color: #8E8E8E;font-size: 2rem;
+                                    text-transform: capitalize;'>{{fname}} , {{lname}}</div>
+                        <div style='    font-size: 1rem;'>{{email}}</div> 
+                         <div style='   font-size: 1rem;'>Priority - {{priority}}</div> 
+                   </div>
+                    </li>
+			 {{/list.values}}
+		</ul>	
+    </script>

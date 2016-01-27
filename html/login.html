@@ -1,0 +1,22 @@
+<script id="target" type="text/template">
+    {{#formElements}}
+             <input id={{name}} 
+             pattern="{{pattern}}"
+             data-num="{{index}}"
+             type={{type}} 
+             maxlength={{maxlength}} 
+             {{required}} 
+             placeholder="{{placholder}}">
+             <span class="errorText"></span>
+    {{/formElements}}
+    {{#priority}} 
+        <select id={{name}} style="    width: 334px;">
+            {{#values}} 
+               <option value={{value}}>{{name}}</option>
+            {{/values}}
+        </select>
+    {{/priority}}
+    {{#buttons}}
+             <button id={{id}} >{{name}}</button>
+    {{/buttons}}
+</script>

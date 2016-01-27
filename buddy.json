@@ -1,0 +1,44 @@
+{
+	"buddy": [{
+		"fname": "chetan1",
+		"lname": "jannu1",
+		"appleid": "cs@apple.com",
+			"lastseen": "today at 11:16am",
+			"status": "online","show":false,
+		"dob": "04/2/1960",
+		"email": "cs@cs.com",
+        "priority":"high",
+		"bio": "I am from abcd , blha blha blha  content - 1",
+		"id": "_14536681870111"
+	}, {
+		"fname": "chetan2",
+		"lname": "jannu2",
+		"appleid": "cs@apple.com",
+			"lastseen": "today at 11:16am",
+			"status": "offline","show":true,
+		"dob": "04/2/1980",
+		"email": "cs@cs.com","priority":"medium",
+		"bio": "I am from abcd , blha blha blha  content - 2",
+		"id": "_14536681870112"
+	}, {
+		"fname": "chetan3",
+		"lname": "jannu3",
+		"appleid": "cs@apple.com",
+			"lastseen": "today at 11:16am",
+			"status": "busy","show":false,
+		"dob": "04/2/1990",
+		"email": "cs@cs.com","priority":"medium",
+		"bio": "I am from abcd , blha blha blha  content - 3",
+		"id": "_14536681870113"
+	}, {
+		"fname": "chetan4",
+		"lname": "jannu4",
+		"appleid": "cs@apple.com",
+			"lastseen": "today at 11:16am",
+			"status": "idle","show":true,
+		"dob": "04/2/1970",
+		"email": "cs@cs.com","priority":"none",
+		"bio": "I am from abcd , blha blha blha  content - 4",
+		"id": "_14536681870114"
+	}]
+}
