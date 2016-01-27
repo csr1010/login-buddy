@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 2014,MAR 26: v 1
+#2016 v1
 
 CACHE:
 index.html
@@ -24,7 +24,6 @@ js/controllers/login.js
 js/global.js
 
 css/app.css
-css/font-awesome.css
 
 
 buddy.json

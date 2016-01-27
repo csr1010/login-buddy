@@ -66,6 +66,9 @@ apple.controllers.buddyModel= (function() {
                     $("#"+currentId).closest('li').addClass('active');
              },10);
         },
+       /* sort buddies based on the property of the object 
+        if sort order is mentioned then sort in that order 
+        else sort ascending or descening based on sortOrder flag*/
         sortBuddies:function(event,prop,order){
             apple.controllers.buddyModel.highlitButton(event);
              var buddiesList = thisModel.list.values;
@@ -87,6 +90,8 @@ apple.controllers.buddyModel= (function() {
               thisModel.list.values = buddiesList;
               apple.models.buddyModel.modeltoView.renderUI(true);
          },
+        /*filter array of objects based on the property and return the new Array
+        */
         FilterBuddies:function(event,prop,value){
               apple.controllers.buddyModel.highlitButton(event);
               var buddiesList = JSON.parse(sessionStorage.getItem("buddydata")).buddy;
@@ -99,6 +104,7 @@ apple.controllers.buddyModel= (function() {
               thisModel.list.values = newValues;
               apple.models.buddyModel.modeltoView.renderUI(true);
          },
+        /*remove any filters or sorting orders or seraches to array and return the original array*/
         removeFilters:function(event){
               apple.controllers.buddyModel.highlitButton(event);
               var buddiesList = JSON.parse(sessionStorage.getItem("buddydata"));
